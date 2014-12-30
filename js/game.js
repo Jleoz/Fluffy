@@ -1,20 +1,22 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
-
-
+    
 var BootState = require('./states/boot');
 var MenuState = require('./states/menu');
 var PlayState = require('./states/play');
 var PreloadState = require('./states/preload');
 
-var game = new Phaser.Game(288, 505, Phaser.AUTO, 'flappy-bird-reborn');
+    
+var w = window.innerWidth * window.devicePixelRatio,
+    h = window.innerHeight * window.devicePixelRatio;
+var game = new Phaser.Game(w, h, Phaser.AUTO, 'flappy-bird-reborn');
+// Original Size w:288 h:505
 
 // Game States
 game.state.add('boot', BootState);
 game.state.add('menu', MenuState);
 game.state.add('play', PlayState);
 game.state.add('preload', PreloadState);
-
 
 game.state.start('boot');
 
@@ -175,8 +177,8 @@ PipeGroup.prototype.checkWorldBounds = function() {
 
 
 PipeGroup.prototype.reset = function(x, y) {
-  this.topPipe.reset(0,0);
-  this.bottomPipe.reset(0,440);
+  this.topPipe.reset(24,0);
+  this.bottomPipe.reset(24,440);
   this.x = x;
   this.y = y;
   this.setAll('body.velocity.x', -200);
@@ -561,7 +563,7 @@ Preload.prototype = {
 
   },
   create: function() {
-    this.asset.cropEnabled = false;
+    this.asset.cropEnabled = true;
   },
   update: function() {
     if(!!this.ready) {
