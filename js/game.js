@@ -330,7 +330,7 @@ Menu.prototype = {
     
     // add the ground sprite as a tile
     // and start scrolling in the negative x direction
-    this.ground = this.game.add.tileSprite(0,400, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio,'ground');
+    this.ground = this.game.add.tileSprite(0,(this.game.height - 100), window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio,'ground');
     this.ground.autoScroll(-200,0);
 
     /** STEP 1 **/
