@@ -7,9 +7,9 @@ var PlayState = require('./states/play');
 var PreloadState = require('./states/preload');
 
     
-var w = window.innerWidth * window.devicePixelRatio,
-    h = window.innerHeight * window.devicePixelRatio;
-var game = new Phaser.Game(w, h, Phaser.AUTO, 'Fluffy-Ball');
+var w = window.innerWidth * window.devicePixelRatio -20,
+    h = window.innerHeight * window.devicePixelRatio -20;
+var game = new Phaser.Game((h > w) ? h : w, (h > w) ? w : h, Phaser.AUTO, 'Fluffy-Ball');
 // Original Size w:288 h:505
 
 // Game States
@@ -154,7 +154,7 @@ var PipeGroup = function(game, parent) {
   Phaser.Group.call(this, game, parent);
 
   this.topPipe = new Pipe(this.game, 0, 0, 0);
-  this.bottomPipe = new Pipe(this.game, 0, 440, 1);
+  this.bottomPipe = new Pipe(this.game, 0, 430, 1);
   this.add(this.topPipe);
   this.add(this.bottomPipe);
   this.hasScored = false;
@@ -411,7 +411,7 @@ Play.prototype = {
     
 
     // create and add a new Ground object
-    this.ground = new Ground(this.game, 0, (this.game.height - 100), window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+    this.ground = new Ground(this.game, 0, this.game.height -100, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     this.game.add.existing(this.ground);
     
 
