@@ -358,8 +358,8 @@ Menu.prototype = {
     
     /** STEP 5 **/
     // Set the originating location of the group
-    this.titleGroup.x = 30;
-    this.titleGroup.y = 100;
+    this.titleGroup.x = (this.game.width/2 -100);
+    this.titleGroup.y = this.game.height/8;
 
     /** STEP 6 **/
     //  create an oscillating animation tween for the group
