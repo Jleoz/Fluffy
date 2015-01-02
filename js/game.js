@@ -7,9 +7,9 @@ var PlayState = require('./states/play');
 var PreloadState = require('./states/preload');
 
     
-var w = window.innerWidth * window.devicePixelRatio,
-    h = window.innerHeight * window.devicePixelRatio;
-var game = new Phaser.Game(w, h, Phaser.AUTO, 'flappy-bird-reborn');
+//var w = window.innerWidth * window.devicePixelRatio,
+//    h = window.innerHeight * window.devicePixelRatio;
+var game = new Phaser.Game(288, 505, Phaser.AUTO, 'flappy-bird-reborn');
 // Original Size w:288 h:505
 
 // Game States
