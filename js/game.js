@@ -7,9 +7,9 @@ var PlayState = require('./states/play');
 var PreloadState = require('./states/preload');
 
     
-//var w = window.innerWidth * window.devicePixelRatio,
-//    h = window.innerHeight * window.devicePixelRatio;
-var game = new Phaser.Game(288, 505, Phaser.AUTO, 'Fluffy-Ball');
+var w = window.innerWidth * window.devicePixelRatio,
+    h = window.innerHeight * window.devicePixelRatio;
+var game = new Phaser.Game(w, h, Phaser.AUTO, 'Fluffy-Ball');
 // Original Size w:288 h:505
 
 // Game States
@@ -206,10 +206,10 @@ var Scoreboard = function(game) {
   this.scoreboard = this.create(this.game.width / 2, 200, 'scoreboard');
   this.scoreboard.anchor.setTo(0.5, 0.5);
   
-  this.scoreText = this.game.add.bitmapText(this.scoreboard.width, 180, 'flappyfont', '', 18);
+  this.scoreText = this.game.add.bitmapText((this.game.width /2 + 70), 180, 'flappyfont', '', 18);
   this.add(this.scoreText);
   
-  this.bestText = this.game.add.bitmapText(this.scoreboard.width, 230, 'flappyfont', '', 18);
+  this.bestText = this.game.add.bitmapText((this.game.width /2 + 70), 230, 'flappyfont', '', 18);
   this.add(this.bestText);
 
   // add our start button with a callback
@@ -330,7 +330,7 @@ Menu.prototype = {
     
     // add the ground sprite as a tile
     // and start scrolling in the negative x direction
-    this.ground = this.game.add.tileSprite(0,400, 335,112,'ground');
+    this.ground = this.game.add.tileSprite(0,400, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio,'ground');
     this.ground.autoScroll(-200,0);
 
     /** STEP 1 **/
@@ -411,7 +411,7 @@ Play.prototype = {
     
 
     // create and add a new Ground object
-    this.ground = new Ground(this.game, 0, 400, 335, 112);
+    this.ground = new Ground(this.game, 0, (this.game.height - 100), window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     this.game.add.existing(this.ground);
     
 
@@ -538,7 +538,7 @@ Preload.prototype = {
 
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
-    this.load.image('background', 'assets/background.png');
+    this.load.image('background', 'assets/Line.jpg');
     this.load.image('ground', 'assets/ground.png');
     this.load.image('title', 'assets/title.png');
     this.load.spritesheet('ball', 'assets/ball.png', 22,22,3);
