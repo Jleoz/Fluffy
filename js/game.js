@@ -154,7 +154,7 @@ var PipeGroup = function(game, parent) {
   Phaser.Group.call(this, game, parent);
 
   this.topPipe = new Pipe(this.game, 0, 0, 0);
-  this.bottomPipe = new Pipe(this.game, 0, 430, 1);
+  this.bottomPipe = new Pipe(this.game, 0, 630, 1);
   this.add(this.topPipe);
   this.add(this.bottomPipe);
   this.hasScored = false;
